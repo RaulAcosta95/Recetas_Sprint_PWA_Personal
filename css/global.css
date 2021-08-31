@@ -1,0 +1,10 @@
+body{
+    background-color:rgb(244, 244, 244);
+}
+.recetas{
+    display: flex;
+    justify-content: center;
+}
+.menu{
+    margin-left: 45vw;
+}

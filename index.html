@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/icon-128x128.ico">
+    <title>FoodNinja</title>
+    
+    <link rel="manifest" href="./manifest.json">
+    <!-- ios support -->
+    <link rel="apple-touch-icon" href="./images/icons/icon-96x96.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+    </style>
+    <link rel="stylesheet" href="./css/global.css">
+    <script type="module" src='./js/components/indexComponents.js'></script>
+</head>
+<body>
+    <header>
+        <menu-desplegable title1="FOOD" title2="NINJA"></menu-desplegable>
+    </header>
+    <section>
+        <article>
+            <div class="menu"></div>
+        </article>
+        <article>
+            <div class="recetas">
+                <receta-en-lista></receta-en-lista>
+            </div>
+            <add-component></add-component>
+        </article>
+    </section>
+
+
+</body>
+</html>
