@@ -1,4 +1,5 @@
-const STATIC_CACHE_NAME = 'site-static-v1';
+const STATIC_CACHE_NAME = 'site-static-v3';
+const DYNAMIC_CACHE_NAME = 'site-dynamic-v3';
 const ASSETS = [//Los ASSETS son archivos en ruta para pre-cargar
     '/',
     '/manifest.json',
@@ -15,9 +16,10 @@ const ASSETS = [//Los ASSETS son archivos en ruta para pre-cargar
     '/js/components/menuComponent.js',
     '/js/components/menuDesplegableComponent.js',
     '/js/components/recetaEnListaComponent.js',
-    '/node_modules/lit-element/lit-element.js'
-
-
+    '/node_modules/lit-element/lit-element.js',
+    '/images/404-Error-bro.svg',
+    '/images/icons/icon-96x96.png',
+    '/fallback.html'
 ]
 
 self.addEventListener('install', evento =>{
@@ -40,7 +42,7 @@ self.addEventListener('activate', evento =>{
         caches.keys().then ( 
             keys => {
                 return Promise.all ( 
-                    keys.filter( key => key !== STATIC_CACHE_NAME) 
+                    keys.filter( key => key !== STATIC_CACHE_NAME && key !== DYNAMIC_CACHE_NAME) 
                                 .map ( key => caches.delete(key) )
                                 )
             }
@@ -50,12 +52,19 @@ self.addEventListener('activate', evento =>{
 
 self.addEventListener('fetch', evento =>{//Peticiones
     // console.log('Fetch event', evento);
-
     evento.respondWith(
         caches.match( evento.request )
             .then( cacheRespuesta => { //Si hay en caché, obtén de caché. Si no, hace la petición
-                return cacheRespuesta || fetch(evento.request);
-            })
+                return cacheRespuesta || fetch(evento.request).then( 
+                    fetchRes => { //caché dinámico
+                        return caches.open( DYNAMIC_CACHE_NAME )
+                            .then ( cache => {
+                                cache.put ( evento.request.url, fetchRes.clone() );
+                                return fetchRes;
+                            })
+                        })
+            }).catch(() => caches.match('/fallback.html'))
+            
     );
 
 })
