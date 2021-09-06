@@ -1,5 +1,5 @@
-const STATIC_CACHE_NAME = 'site-static-v3';
-const DYNAMIC_CACHE_NAME = 'site-dynamic-v3';
+const STATIC_CACHE_NAME = 'site-static-v1';
+const DYNAMIC_CACHE_NAME = 'site-dynamic-v1';
 const ASSETS = [//Los ASSETS son archivos en ruta para pre-cargar
     '/',
     '/manifest.json',
@@ -21,6 +21,16 @@ const ASSETS = [//Los ASSETS son archivos en ruta para pre-cargar
     '/images/icons/icon-96x96.png',
     '/fallback.html'
 ]
+
+const LIMIT_CACHE_SIZE = (nameCache, size) =>{
+    caches.open(nameCache).then(cache => {
+        cache.keys().then(keys => {
+            if(keys.length > size){
+                cache.delete(keys[0]).then(LIMIT_CACHE_SIZE(nameCache,size))
+            }
+        })
+    })
+};
 
 self.addEventListener('install', evento =>{
     // console.log('Service Worker Has Been Installed');
@@ -60,6 +70,9 @@ self.addEventListener('fetch', evento =>{//Peticiones
                             return caches.open( DYNAMIC_CACHE_NAME )
                                 .then ( cache => {
                                     cache.put ( evento.request.url, fetchRespuesta.clone() );
+                                    //Limite de espacio de caché
+                                    //RECORDAR CAMBIARLO AL CRECER APLICACIÓN
+                                    LIMIT_CACHE_SIZE(DYNAMIC_CACHE_NAME, 25);
                                     return fetchRespuesta;
                                 })
                         }
