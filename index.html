@@ -19,6 +19,8 @@
     </style>
     <link rel="stylesheet" href="./css/global.css">
     <script type="module" src='./js/components/indexComponents.js'></script>
+    <!-- FIREBASE -->
+    <!-- <script type="module" src="./js/firebaseconnection.js"></script> -->
 </head>
 <body>
     <header>
@@ -30,11 +32,34 @@
         </article>
         <article>
             <div class="recetas">
-                <receta-en-lista></receta-en-lista>
+                <lista-recetas></lista-recetas>
             </div>
             <add-component></add-component>
         </article>
     </section>
+    
+    
+    <!-- DATABASE -->
+    <!-- // Import the functions you need from the SDKs you need -->
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-firestore.js"></script>
+    
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDERFpo7pSfkaUM9iT-cll7tJVWQtdv9D8",
+            authDomain: "foodninja-pwa-7ab44.firebaseapp.com",
+            projectId: "foodninja-pwa-7ab44",
+            storageBucket: "foodninja-pwa-7ab44.appspot.com",
+            messagingSenderId: "1014499526141",
+            appId: "1:1014499526141:web:55ce1a512abf334c94c594",
+            measurementId: "G-TTCQL10VV8"
+        };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+        </script>
+    
     <script src="./js/app.js"></script>
+    <script src="./js/db.js"></script>
 </body>
 </html>

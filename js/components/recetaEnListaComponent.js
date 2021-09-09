@@ -1,10 +1,17 @@
 import { LitElement, html } from "lit-element";
 class RecetaEnListaComponent extends LitElement{
     static get properties(){
-        return {}
+        return {
+            id: {type: String},
+            title: {type: String},
+            ingredients: {type: String}
+        }
     }
     constructor(){
         super();
+        this.id = "";
+        this.title = "";
+        this.ingredients = "";
     }
     render(){
         return html `
@@ -15,7 +22,7 @@ class RecetaEnListaComponent extends LitElement{
             }
             .recetaEnListaComponent{
                 background-color: white;
-                width: 80vw;
+                width: 90vw;
                 margin-top: 20px;
                 margin-bottom: 20px;
                 font-family: sans-serif;
@@ -52,16 +59,19 @@ class RecetaEnListaComponent extends LitElement{
             <div class="recetaEnListaComponent">
                 <img class="dishImage" src="./images/dish.png">
                 <div class="contenedorInfo">
-                    <h3>Title </h3>
-                    <p>info</p>
+                    <h3>${this.title} </h3>
+                    <p>${this.ingredients}</p>
                 </div>
                 <div class="contenedorBoton">
-                    <button>
+                    <button @click=${this._eliminarReceta}>
                         <img src="./images/delete.png">
                     </button>
                 </div>
             </div>
         `
+    }
+    _eliminarReceta(){
+        db.collection('recipes').doc(this.id).delete();
     }
 }
 customElements.define('receta-en-lista', RecetaEnListaComponent);
