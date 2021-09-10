@@ -63,7 +63,6 @@ class AddComponent extends LitElement{
         `
     }
     _formNuevaReceta(){
-        console.log('form nueva receta');
         let addComponent = this.shadowRoot.querySelector('.formNuevaReceta');
 
         if(addComponent.hasChildNodes()){
@@ -76,9 +75,27 @@ class AddComponent extends LitElement{
                 <input type="text" id="title">
                 <label for="ingredients">Ingredients</label>
                 <input type="text" id="ingredients">
-                <button>AÑADIR</button>
-            </form>
-        `
+                <button >AÑADIR</button>
+                </form>
+                `
+        }
+        this._addFirebaseReceta();
+    }
+    _addFirebaseReceta(){
+        const form = this.shadowRoot.querySelector('form');
+        if(form){
+            form.addEventListener('submit', evento => {
+                evento.preventDefault();
+                const receta = {
+                    title: form.title.value,
+                    ingredients: form.ingredients.value
+                }
+                db.collection('recipes').add(receta)
+                    .catch ( err => console.log(err));
+                form.title.value = '';
+                form.ingredients.value = '';
+                
+            })
         }
     }
 }
