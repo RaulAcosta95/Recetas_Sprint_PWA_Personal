@@ -67,12 +67,12 @@ class menuDesplegableComponent extends LitElement{
         `
     }
     aparecerMenu(){
-        // let contenedorMenu = document.querySelector('.menu');
-        // if(contenedorMenu.hasChildNodes()){
-        //     contenedorMenu.innerHTML = null;
-        // } else {
-        //     contenedorMenu.innerHTML = '<menu-component title1="FOOD" title2="NINJA"></menu-component>';
-        // }
+        let contenedorMenu = document.querySelector('.menu');
+        if(contenedorMenu.hasChildNodes()){
+            contenedorMenu.innerHTML = null;
+        } else {
+            contenedorMenu.innerHTML = '<menu-component title1="FOOD" title2="NINJA"></menu-component>';
+        }
     }
 }
 customElements.define('menu-desplegable', menuDesplegableComponent);

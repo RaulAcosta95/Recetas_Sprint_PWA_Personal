@@ -20,14 +20,51 @@ export class MenuComponent extends LitElement{
     render(){
         return html `
             <style>
+                .componenteMenu{
+                    margin-left: 25vw;
+                    position: absolute;
+                    width: 75vw;
+                    background-color: rgb(255, 254, 253);
+                    height: 100%;
+                    font-family: sans-serif;
+                    transition: 0.5s;
+                }
+                .componenteMenu h2{
+                    font-size: 15px;
+                    padding-left: 20px;
+                    color: rgb(143, 143, 143);
+                }
+                .componenteMenu div{
+                    height: 40px;
+                    width: 60%;
+                    display: flex;
+                    align-items: center;
+                }
+                .componenteMenu .Contact img{
+                    padding-left: 20px;
+                    width: 30px;
+                }
+                .componenteMenu a{
+                    padding-left: 20px;
+                }
 
+                .componenteMenu div:active, .componenteMenu div:hover{
+                    background-color: rgb(240, 235, 230);
+                }
             </style>
-            <!-- <link rel="stylesheet" href="./css/apoyo.css"> -->
             <div class="componenteMenu">
-            <h2><span id="title1">${this.title1}</span><span id="title2">${this.title2}</span></h2>
-                <a>Pagina 1</a>
-                <a>Pagina 2</a>
-                <a>Pagina 3</a>
+                <h2>FOOD NINJA</h2>
+                <div class="Home">
+                    <a>Home</a>
+                </div>
+                <div class="About">
+                    <a>About</a>
+                </div>
+                <hr>
+                <div class="Contact">
+                    <img src="./images/mail.svg">
+                    <a>Contact</a>
+                </div>
             </div>
         `
     }

@@ -34,7 +34,7 @@ const LIMIT_CACHE_SIZE = (nameCache, size) =>{
 
 self.addEventListener('install', evento =>{
     // console.log('Service Worker Has Been Installed');
-
+    // self.skipWaiting();
     //Carga los archivos en caché
     evento.waitUntil( 
         caches.open(STATIC_CACHE_NAME)
@@ -44,6 +44,7 @@ self.addEventListener('install', evento =>{
     );
 
 });
+
 
 self.addEventListener('activate', evento =>{
     // console.log('Service Worker Has Been Activated');
@@ -61,27 +62,28 @@ self.addEventListener('activate', evento =>{
 });
 
 self.addEventListener('fetch', evento =>{//Peticiones
+    // ESTO TIENE UN BUG EN ALGÚN LADO
     // console.log('Fetch event', evento);
-    evento.respondWith(
-        caches.match( evento.request )
-            .then( cacheRespuesta => { //Si hay en caché, obtén de caché. Si no, hace la petición
-                return cacheRespuesta || fetch(evento.request)
-                    .then( fetchRespuesta => { //caché dinámico
-                            return caches.open( DYNAMIC_CACHE_NAME )
-                                .then ( cache => {
-                                    cache.put ( evento.request.url, fetchRespuesta.clone() );
-                                    //Limite de espacio de caché
-                                    //RECORDAR CAMBIARLO AL CRECER APLICACIÓN
-                                    LIMIT_CACHE_SIZE(DYNAMIC_CACHE_NAME, 25);
-                                    return fetchRespuesta;
-                                })
-                        }
-                    );
-            }).catch(() => {
-                //Solo ocurre si pide un archivo html que no tenga en caché
-                if(evento.request.url.indexOf('.html') > -1){
-                    return caches.match('./fallback.html');
-                }
-            })
-    );
+    // evento.respondWith(
+    //     caches.match( evento.request )
+    //         .then( cacheRespuesta => { //Si hay en caché, obtén de caché. Si no, hace la petición
+    //             return cacheRespuesta || fetch(evento.request)
+    //                 .then( fetchRespuesta => { //caché dinámico
+    //                         return caches.open( DYNAMIC_CACHE_NAME )
+    //                             .then ( cache => {
+    //                                 cache.put ( evento.request.url, fetchRespuesta.clone() );
+    //                                 //Limite de espacio de caché
+    //                                 //RECORDAR CAMBIARLO AL CRECER APLICACIÓN
+    //                                 LIMIT_CACHE_SIZE(DYNAMIC_CACHE_NAME, 60);
+    //                                 return fetchRespuesta;
+    //                             })
+    //                     }
+    //                 );
+    //         }).catch(() => {
+    //             //Solo ocurre si pide un archivo html que no tenga en caché
+    //             if(evento.request.url.indexOf('.html') > -1){
+    //                 return caches.match('./fallback.html');
+    //             }
+    //         })
+    // );
 });
