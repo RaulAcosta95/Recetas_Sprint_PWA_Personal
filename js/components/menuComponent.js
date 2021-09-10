@@ -26,7 +26,6 @@ export class MenuComponent extends LitElement{
                     width: 75vw;
                     background-color: rgb(255, 254, 253);
                     height: 100%;
-                    font-family: sans-serif;
                     transition: 0.5s;
                 }
                 .componenteMenu h2{
