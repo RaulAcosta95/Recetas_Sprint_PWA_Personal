@@ -1,4 +1,8 @@
 import { LitElement,html, property } from "lit-element";
+import './contactPageComponent'
+import './addComponent'
+import './listaDeRecetasComponent'
+import './recetaEnListaComponent'
 export class MenuComponent extends LitElement{
     static get property(){
         return {
@@ -20,6 +24,7 @@ export class MenuComponent extends LitElement{
     render(){
         return html `
             <style>
+
                 .componenteMenu{
                     margin-left: 25vw;
                     position: absolute;
@@ -43,7 +48,8 @@ export class MenuComponent extends LitElement{
                     padding-left: 20px;
                     width: 30px;
                 }
-                .componenteMenu a{
+                .componenteMenu button{
+                    border:none;
                     padding-left: 20px;
                 }
 
@@ -54,18 +60,30 @@ export class MenuComponent extends LitElement{
             <div class="componenteMenu">
                 <h2>FOOD NINJA</h2>
                 <div class="Home">
-                    <a>Home</a>
+                    <button @click=${this._appearHome}>Home</button>
                 </div>
                 <div class="About">
-                    <a>About</a>
+                    <button >About</button>
                 </div>
                 <hr>
                 <div class="Contact">
                     <img src="./images/mail.svg">
-                    <a>Contact</a>
+                    <button @click=${this._appearContact}>Contact</button>
                 </div>
             </div>
         `
+    }
+    _appearContact(){
+        let contenedorContact = document.querySelector('.contacto');
+        let paginaRecetas = document.querySelector('#pageRecetas');
+        contenedorContact.innerHTML="<contact-page></contact-page>"
+        paginaRecetas.innerHTML="";
+    }
+    _appearHome(){
+        let contenedorContact = document.querySelector('.contacto');
+        let paginaRecetas = document.querySelector('#pageRecetas');
+        paginaRecetas.innerHTML='<div class="recetas"><lista-recetas></lista-recetas></div><add-component></add-component>';
+        contenedorContact.innerHTML=""
     }
 }
 customElements.define('menu-component', MenuComponent);
