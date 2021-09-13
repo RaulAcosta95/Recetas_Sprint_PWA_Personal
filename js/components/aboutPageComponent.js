@@ -1,8 +1,8 @@
 import { LitElement , html} from "lit-element"
-class ContactPageComponent extends LitElement{
+class AboutPageComponent extends LitElement{
     constructor(){
         super();
-        console.log('pagina contacto');
+        console.log('pagina About');
     }
     static get properties(){
         return {
@@ -12,30 +12,28 @@ class ContactPageComponent extends LitElement{
     render(){
         return html`
         <style>
-            .contact *{
+            .about *{
                 margin:0;
                 padding:0;
                 color: rgb(107, 107, 107);
             }
-            .contact h2{
+            .about h2{
                 text-align:center;
                 padding-top:20px;
                 margin-bottom:20px;
             }
-            .contact p{
+            .about p{
                 text-align:left;
-                margin:10%;
+                margin:10px;
             }
         </style>
-            <div class="contact">
-                <h2>Contact Us</h2>
+            <div class="about">
+                <h2>About Us</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, repellendus excepturi mollitia officia consequuntur aliquid iusto aperiam nulla labore temporibus ab nisi id facilis voluptate veniam eligendi rem illum nesciunt!</p>
-                <p>Find us at</p>
-                <p> 123 Spicy Noodle Food</p>
-                <p>Manchester, UK</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, repellendus excepturi mollitia officia consequuntur aliquid iusto aperiam nulla labore temporibus ab nisi id facilis voluptate veniam eligendi rem illum nesciunt!</p>
             </div>
         `
     }
     
 }
-customElements.define('contact-page', ContactPageComponent);
+customElements.define('about-page', AboutPageComponent);
