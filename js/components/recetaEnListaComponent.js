@@ -2,14 +2,14 @@ import { LitElement, html } from "lit-element";
 class RecetaEnListaComponent extends LitElement{
     static get properties(){
         return {
-            id: {type: String},
+            idFirebase: {type: String},
             title: {type: String},
             ingredients: {type: String}
         }
     }
     constructor(){
         super();
-        this.id = "";
+        this.idFirebase = "";
         this.title = "";
         this.ingredients = "";
     }
@@ -71,7 +71,7 @@ class RecetaEnListaComponent extends LitElement{
         `
     }
     _eliminarReceta(){
-        db.collection('recipes').doc(this.id).delete();
+        db.collection('recipes').doc(this.idFirebase).delete();
     }
 }
 customElements.define('receta-en-lista', RecetaEnListaComponent);

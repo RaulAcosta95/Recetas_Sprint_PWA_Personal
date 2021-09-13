@@ -35,7 +35,7 @@ class ListaDeRecetasComponent extends LitElement{
     _pintarReceta(data, id){
         let listaRecetas = this.shadowRoot.querySelector('.listaRecetas');
         listaRecetas.innerHTML += 
-        `<receta-en-lista title="${data.title}" ingredients="${data.ingredients}" id="${id}"></receta-en-lista>`;
+        `<receta-en-lista title="${data.title}" ingredients="${data.ingredients}" id="${id}" idFirebase="${id}"></receta-en-lista>`;
         console.log(id+' Añadido');
 
     }
