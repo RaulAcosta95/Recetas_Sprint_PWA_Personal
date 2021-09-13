@@ -67,7 +67,7 @@ export class MenuComponent extends LitElement{
                 </div>
                 <hr>
                 <div class="Contact">
-                    <img src="./images/mail.svg">
+                    <img src="./images/mail.svg" alt="Imagen de carta como correo electrónico" title="Imagen de carta como correo electrónico">
                     <button @click=${this._appearContact}>Contact</button>
                 </div>
             </div>

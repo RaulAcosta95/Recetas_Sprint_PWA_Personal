@@ -45,15 +45,18 @@ class menuDesplegableComponent extends LitElement{
             .menuDesplegableComponent h2{
                 text-align: center;
                 float: left;
-                width: 90vw;
+                width: 100vw;
             }
             .menuDesplegableComponent button{
                 border:none;
                 background-color:rgba(172, 128, 128,.0);
                 right: 20px;
-                width: 10vw;
+                width: 40px;
                 cursor:pointer;
                 position: absolute;
+            }
+            .menuDesplegableComponent img{
+                width:100%;
             }
         </style>
         <!-- <link rel="stylesheet" href="./css/apoyo.css"> -->
@@ -61,7 +64,7 @@ class menuDesplegableComponent extends LitElement{
             <div class="menuDesplegableComponent">
                 <h2><span id="title1">${this.title1}</span><span id="title2">${this.title2}</span></h2>
 
-                <button @click=${this.aparecerMenu}><img src='./images/menu.png'></button>
+                <button @click=${this.aparecerMenu}><img src='./images/menu.png' alt="Botón aparecer menú" title="Botón aparecer menú"></button>
             </div>
             <!-- <menu-component></menu-component> -->
         `

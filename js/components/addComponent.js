@@ -56,7 +56,7 @@ class AddComponent extends LitElement{
             </style>
             <div class="addComponent">
                 <div class="containerButtonAdd">
-                    <button id="addButton" @click=${this._formNuevaReceta}><img src='./images/plus.svg'></button>
+                    <button id="addButton" @click=${this._formNuevaReceta}><img src='./images/plus.svg' alt="Botón de añadir" title="Botón de añadir"></button>
                 </div>
                 <div class="formNuevaReceta"></div>
             </div>

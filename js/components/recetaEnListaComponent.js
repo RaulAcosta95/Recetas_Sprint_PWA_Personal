@@ -57,14 +57,14 @@ class RecetaEnListaComponent extends LitElement{
             }
             </style>
             <div class="recetaEnListaComponent">
-                <img class="dishImage" src="./images/dish.png">
+                <img class="dishImage" src="./images/dish.png" alt="Plato de comida" title="Plato de comida">
                 <div class="contenedorInfo">
                     <h3>${this.title} </h3>
                     <p>${this.ingredients}</p>
                 </div>
                 <div class="contenedorBoton">
                     <button @click=${this._eliminarReceta}>
-                        <img src="./images/delete.png">
+                        <img src="./images/delete.png"alt="Botón borrar" title="Boton borrar">
                     </button>
                 </div>
             </div>
