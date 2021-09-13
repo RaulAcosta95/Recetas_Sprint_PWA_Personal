@@ -1,5 +1,5 @@
-const STATIC_CACHE_NAME = 'site-static-v3';
-const DYNAMIC_CACHE_NAME = 'site-dynamic-v3';
+const STATIC_CACHE_NAME = 'site-static-v2';
+const DYNAMIC_CACHE_NAME = 'site-dynamic-v2';
 const ASSETS = [//Los ASSETS son archivos en ruta para pre-cargar
     '/',
     '/manifest.json',
